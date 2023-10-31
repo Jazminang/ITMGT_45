@@ -30,17 +30,19 @@ def body_mass_index(weight, height):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
 def body_mass_index(weight, height):
-#formulas
-    weight_kg = weight/ 2.205
-    height_m = height/3.281
-    BMI= weight_kg/ (height_m*height_m)
-    return BMI
+    # Convert weight from pounds to kilograms
+    weight_kg = weight * 0.45359237
 
-# inputs
-weight = float(input("Enter weight in pounds: "))
-height = list(input("Enter height in feet: "))
+    # Convert height from feet and inches to meters
+    height_m = (height[0] * 0.3048) + (height[1] * 0.0254)
 
-#calculate and print
-BMI_value = body_mass_index(weight, height)
-print(float(f"Your final BMI: {BMI_value:.2f}"))
+    # Calculate BMI
+    bmi = weight_kg / (height_m ** 2)
 
+    return bmi
+
+# Example usage
+weight = float(input("Enter Weight in lbs:"))
+height = [int(input("Enter foot component of height:")) , int(input("Enter inch component of height:"))]
+bmi = body_mass_index(weight, height)
+print("BMI:", bmi)

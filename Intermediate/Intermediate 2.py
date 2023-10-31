@@ -38,7 +38,7 @@ def caesar_cipher(message, shift):
     return shifted_message
 
 # Example
-message = "HELLO WORLD"
+message = input("Type message in all caps:")
 shift = 3
 ciphered_message = caesar_cipher(message, shift)
 print(ciphered_message)  # Output: "KHOOR ZRUOG"

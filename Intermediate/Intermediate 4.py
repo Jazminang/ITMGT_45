@@ -69,7 +69,7 @@ def vigenere_cipher(message, key):
 
 
 # Example
-message = "A C"
+message =  input("Type message in all caps:")
 key = "KEY"
 ciphered_message = vigenere_cipher(message, key)
 print(ciphered_message)  # Output: "K A"

@@ -46,7 +46,7 @@ def shift_by_letter(letter, letter_shift):
         return letter
 
 # Examples
-print(shift_by_letter("A", "A"))  # Output: "A"
-print(shift_by_letter("A", "C"))  # Output: "C"
-print(shift_by_letter("B", "K"))  # Output: "L"
-print(shift_by_letter(" ", "K"))  # Output: " "
+print(shift_by_letter("A", "A"))  
+print(shift_by_letter("A", "C"))  
+print(shift_by_letter("B", "K"))  
+print(shift_by_letter(" ", "K")) 

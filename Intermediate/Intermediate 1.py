@@ -48,8 +48,8 @@ def shift_letter(letter, shift):
         return letter
 
 # Examples
-print(shift_letter("A", 0))  # Output: "A"
-print(shift_letter("A", 2))  # Output: "C"
-print(shift_letter("Z", 1))  # Output: "A"
-print(shift_letter("X", 5))  # Output: "C"
-print(shift_letter(" ", 3))  # Output: " "
+print(shift_letter("A", 0)) 
+print(shift_letter("A", 2)) 
+print(shift_letter("Z", 1))  
+print(shift_letter("X", 5)) 
+print(shift_letter(" ", 3))  

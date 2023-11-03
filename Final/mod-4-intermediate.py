@@ -37,7 +37,29 @@ def shift_letter(letter, shift):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+
+def shift_letter(letter, shift):
+    if letter.isalpha() and letter.isupper():
+        # Get the ASCII code of the letter
+        letter_code = ord(letter)
+        # Calculate the shifted letter code
+        shifted_code = (letter_code - ord('A') + shift) % 26 + ord('A')
+        # Convert the shifted code back to a letter
+        shifted_letter = chr(shifted_code)
+        return shifted_letter
+    elif letter == " ":
+        return " "
+    else:
+        # Handle invalid input by returning the original character
+        return letter
+
+# Examples
+print(shift_letter("A", 0)) 
+print(shift_letter("A", 2)) 
+print(shift_letter("Z", 1))  
+print(shift_letter("X", 5)) 
+print(shift_letter(" ", 3))  
+
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher. 
@@ -59,7 +81,32 @@ def caesar_cipher(message, shift):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+
+def shift_letter(letter, shift):
+    if letter.isalpha() and letter.isupper():
+        letter_code = ord(letter)
+        shifted_code = (letter_code - ord('A') + shift) % 26 + ord('A')
+        shifted_letter = chr(shifted_code)
+        return shifted_letter
+    elif letter == " ":
+        return " "
+    else:
+        return letter
+
+def caesar_cipher(message, shift):
+    shifted_message = ""
+    for char in message:
+        shifted_char = shift_letter(char, shift)
+        shifted_message += shifted_char
+    return shifted_message
+
+# Example
+message = input("Type message in all caps:")
+shift = 3
+ciphered_message = caesar_cipher(message, shift)
+print(ciphered_message)
+
+
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter. 
@@ -89,7 +136,30 @@ def shift_by_letter(letter, letter_shift):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+
+def shift_by_letter(letter, letter_shift):
+    if letter == " ":
+        return " "
+    
+    if letter.isalpha() and letter.isupper() and letter_shift.isalpha() and letter_shift.isupper():
+        # Calculate the numerical equivalent of the shift letter
+        shift_value = ord(letter_shift) - ord('A')
+        # Get the ASCII code of the input letter
+        letter_code = ord(letter)
+        # Calculate the shifted letter code
+        shifted_code = (letter_code - ord('A') + shift_value) % 26 + ord('A')
+        # Convert the shifted code back to a letter
+        shifted_letter = chr(shifted_code)
+        return shifted_letter
+    else:
+        # Handle invalid input by returning the original character
+        return letter
+
+# Examples
+print(shift_by_letter("A", "A"))  
+print(shift_by_letter("A", "C"))  
+print(shift_by_letter("B", "K"))  
+print(shift_by_letter(" ", "K")) 
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher. 
@@ -122,4 +192,36 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+
+
+def vigenere_cipher(message, key):
+    # Remove spaces from the message
+    message = message.replace(" ", "")
+    
+    # Extend the key to match the length of the message
+    extended_key = key * (len(message) // len(key)) + key[:len(message) % len(key)]
+    
+    encrypted_message = ""
+    for i in range(len(message)):
+        shift_value = ord(extended_key[i]) - ord('A')
+        shifted_letter = shift_letter(message[i], shift_value)
+        encrypted_message += shifted_letter
+    
+    # Reinsert spaces in the original positions
+    j = 0
+    final_message = ""
+    for i in range(len(message)):
+        if message[i] == " ":
+            final_message += " "
+        else:
+            final_message += encrypted_message[j]
+            j += 1
+    
+    return final_message
+
+
+# Example
+message =  input("Type message in all caps:")
+key = "KEY"
+ciphered_message = vigenere_cipher(message, key)
+print(ciphered_message)  

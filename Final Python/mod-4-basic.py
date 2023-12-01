@@ -35,27 +35,13 @@ def savings(gross_pay, tax_rate, expenses):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 
 
-def calculate_savings(gross_pay, tax_rate, expenses):
-    # Calculate taxes
-    taxes = gross_pay * (tax_rate / 100)
-
-    # Calculate net pay after deducting taxes
-    net_pay = gross_pay - taxes
-
-    # Calculate savings after deducting expenses
+def savings(gross_pay, tax_rate, expenses):
+    net_pay = int(gross_pay * (1- (tax_rate / 100)))
     savings = net_pay - expenses
-
     return savings
 
-# Input values
-gross_pay = int(input("Enter gross pay: "))
-tax_rate = float(input("Enter tax rate (in percentage): "))
-expenses = int(input("Enter expenses: "))
-
-# Calculate and print the savings
-total_savings = calculate_savings(gross_pay, tax_rate, expenses)
-int(print(f"Your total savings: ₱{total_savings:.2f}"))
-
+total_savings = savings(6000, 0.15, 1000)
+print("Your total savings: ₱", total_savings)
 
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
@@ -94,23 +80,15 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
 
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
- #Multiply the number of jobs by the material consumption per job.
     total_material_consumed = num_jobs * job_consumption
-
-    #Subtract the total material consumed from the total material available.
     waste = total_material-total_material_consumed
-    return waste
+    final_waste = f"{waste}{material_units}"
+    return final_waste
 
-# Input values
-total_material = int(input("Enter total materials: "))
-material_units= str(input("units of materials: "))
-num_jobs = int(input("Enter number of jobs: "))
-job_consumption = int(input("Enter job consumption: "))
 
 # Calculate and print the savings
-total_waste= material_waste(total_material, material_units, num_jobs, job_consumption)
-str(print(f"Your total waste: {total_waste:.2f}{material_units}"))
-
+total_waste= material_waste(50000,"kg", 15, 30)
+print("Your total waste:", total_waste)
 
 
 
@@ -148,21 +126,13 @@ def interest(principal, rate, periods):
 
 
 def interest(principal, rate, periods):
-#final
-    simple_interest = principal * (rate* periods)
-
-#final value
-    final_value = simple_interest + principal
+    simple_interest = principal * (rate * periods)
+    final_value = int(simple_interest + principal)
     return final_value
 
-#input values
-principal = int(input("Enter Principal Investments: "))
-rate = float(input("Enter Investment Rate: "))
-periods = int(input("Enter Investment Period: "))
+total_investment = interest(50000, 0.04, 12)
+print("Your final value for investment is :", total_investment)
 
-#calculate and print total investment
-total_investment = interest(principal, rate, periods)
-int(print(f"Your final value for investment is : {total_investment:.2f}"))
 
 def body_mass_index(weight, height):
     '''Body Mass Index.

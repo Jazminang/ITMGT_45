@@ -192,36 +192,23 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-
-
 def vigenere_cipher(message, key):
-    # Remove spaces from the message
-    message = message.replace(" ", "")
-    
-    # Extend the key to match the length of the message
-    extended_key = key * (len(message) // len(key)) + key[:len(message) % len(key)]
-    
-    encrypted_message = ""
-    for i in range(len(message)):
-        shift_value = ord(extended_key[i]) - ord('A')
-        shifted_letter = shift_letter(message[i], shift_value)
-        encrypted_message += shifted_letter
-    
-    # Reinsert spaces in the original positions
-    j = 0
-    final_message = ""
-    for i in range(len(message)):
-        if message[i] == " ":
-            final_message += " "
+    alphabet = [chr(i) for i in range(65, 91)]
+
+    key = key * (len(message) // len(key)) + key[:len(message) % len(key)]
+    encrypted_result = ""
+
+    for msg_char, key_char in zip(message, key):
+        if msg_char == ' ':
+            encrypted_result += " "
         else:
-            final_message += encrypted_message[j]
-            j += 1
-    
-    return final_message
+            msg_index = alphabet.index(msg_char)
+            key_index = alphabet.index(key_char)
+            encrypted_index = (msg_index + key_index) % 26
+            encrypted_result += alphabet[encrypted_index]
+
+    return encrypted_result
 
 
-# Example
-message =  input("Type message in all caps:")
-key = "KEY"
-ciphered_message = vigenere_cipher(message, key)
-print(ciphered_message)  
+final= vigenere_cipher("HI I AM JAZMIN", "KEY")
+print(final)
